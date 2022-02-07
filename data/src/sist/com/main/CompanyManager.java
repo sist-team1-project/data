@@ -107,16 +107,20 @@ public class CompanyManager {
                     
                     /** 내용 **/
                     a.setAd_content(ad.get(0).html().replace("&nbsp;"," ").replace("&amp;","&").replace("&lt;","<").replace("&gt;",">").replace("&035;","#").replaceAll(" +", " ")); // html 특수문자 변환
-                    a.setAd_we(ad.get(1).text());
-                    a.setAd_education(ad.get(2).text());
                     
+                    /** 경력 **/
+                    a.setAd_we(ad.get(1).text());
+                    
+                    /** 학력 **/
+                    a.setAd_education(ad.get(2).text());
+                                        
                     /** 우대 자격증 (구분자: ,) **/
                     String qualification = ad.get(21).text().replace(" -", "").replace("(우대)","").replace("(필수)", ""); // 자격증에서 -, (우대), (필수) 제거
                     if(qualification.contains("기타")) { // 자격증에 기타가 포함되어있으면 기타 이전까지만 저장
                         qualification = qualification.substring(0,qualification.indexOf("기타"));
                     }   
                     a.setAd_qualification(qualification.replace(" ", "")); // 스페이스 제거
-                    
+                                        
                     /** 우대 언어 **/
                     a.setAd_language(ad.get(22).text());
                     
@@ -129,11 +133,15 @@ public class CompanyManager {
                     
                     /** 근무 시간 **/
                     String workhours = ad.get(11).html().replace("&nbsp;"," ").replace("&amp;","&").replace("&lt;","<").replace("&gt;",">").replace("&035;","#").replaceAll(" +", " "); // html 특수문자 변환
-                    a.setAd_workhours(workhours.substring(0,workhours.lastIndexOf("<br>")).trim()); // html 뒤에 <br> 붙는거 제거
+                    if(workhours.startsWith("<br>"))
+                        workhours = (workhours.substring(4)); // html 앞에 <br> 붙는거 제거
+                    if(workhours.endsWith("<br>"))
+                        workhours = (workhours.substring(0, workhours.lastIndexOf("<br>"))); // html 뒤에 <br> 붙는거 제거
+                    a.setAd_workhours(workhours.trim());
                     
                     /** 근무 형태 **/
                     a.setAd_worktype(ad.get(12).text());
-                    
+
                     /** 근무 예정지 **/
                     a.setAd_workplace(ad.get(6).text());
                     
@@ -142,11 +150,13 @@ public class CompanyManager {
                     a.setAd_end(end.substring(0,end.indexOf(" 마")).replace(".", "-"));
                     
                     adao.adInsert(a); // 오라클에 값 저장
+                    
+                    System.out.println("잘 넣고 있으니 걱정마세요 토닥토닥 -은영-");
                 }
             }
-            System.out.println("완료");
-    
+            System.out.println("끝났어요 예이~ -은영-");
         } catch (Exception ex) {
+            System.err.println("빼액!!!!!!!!!!!!!!!!!!!!!!! 오류발생");
             ex.printStackTrace();
         }
     }
