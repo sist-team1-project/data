@@ -33,7 +33,7 @@ public class CompanyManager {
             }
         }
     }
- 
+    
     public static void main(String[] args) {
         try {
             CompanyDAO cdao = new CompanyDAO();
@@ -61,11 +61,10 @@ public class CompanyManager {
                     AdVO a = new AdVO();
 
                     if(comp.size() == 0) continue;
-                    
+                                        
                     // 중복 확인을 위하여 회사명과 주소를 먼저 저장
                     String c_name = comp.get(0).text();
                     String c_addr = doc2.select("div.data-table td").first().text();
-
                     
                     int id = duplicate(c_name, c_addr); // 이미 존재하는 회사인지 확인 후 존재하면 ID 저장, 존재하지 않으면 ID는 -1
                     if ( id == -1) { // 데이터에 회사가 아직 존재하지 않음
@@ -75,7 +74,7 @@ public class CompanyManager {
                         c.setC_id(id);
                         
                         /** 회사 로고 **/
-                        c.setC_logo(doc2.select("div.logo-company img").attr("src"));
+                        c.setC_logo("https://work.go.kr"+doc2.select("div.logo-company img").attr("src"));
                         
                         /** 회사 이름 **/
                         c.setC_name(c_name);

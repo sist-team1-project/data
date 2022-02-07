@@ -28,8 +28,7 @@ public class BookManager {
                     if (!path.startsWith("/Product/Goods/"))
                         continue;
                     
-                    Document doc2 = Jsoup.connect("http://www.yes24.com/"+path).timeout(30000).get();
-                    
+                    Document doc2 = Jsoup.connect("http://www.yes24.com/" + path).timeout(30000).get();
                     
                     /* 수험서 타이틀 */
                     b.setBook_title(doc2.select("div.gd_titArea").text());
