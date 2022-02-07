@@ -1,7 +1,5 @@
 package sist.com.main;
 
-import java.util.*;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -42,12 +40,14 @@ public class BookManager {
                     /* Yes24링크 */
                     b.setBook_link("http://www.yes24.com/"+path);
 
-                    bdao.bookInsert(b); // 오라클에 값 저장 
+                    bdao.bookInsert(b); // 오라클에 값 저장
+                    System.out.println("잘 넣고 있으니 걱정마세요 토닥토닥 -은영-");
                 }
             }
-            System.out.println("완료");
+            System.out.println("끝났어요 예이~ -은영-");
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            System.err.println("빼액!!!!!!!!!!!!!!!!!!!!!!! 오류발생");
+            ex.printStackTrace();
         }
     }
 }
