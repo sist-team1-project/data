@@ -14,7 +14,7 @@ public class BookDAO {
         try {
             conn = db.getConnection(conn);
 
-            String sql = "INSERT INTO textbook VALUES (textbook_id_seq.NEXTVAL,?,?,?,?)";
+            String sql = "INSERT INTO textbook_1 VALUES (textbook_id_seq_1.NEXTVAL,?,?,?,?)";
             ps = conn.prepareStatement(sql);
 
             ps.setString(1, b.getBook_title());

@@ -13,7 +13,7 @@ public class CompanyDAO {
         try {
             conn = db.getConnection(conn);
 
-            String sql = "SELECT c_id_seq.NEXTVAL FROM DUAL";
+            String sql = "SELECT c_id_seq_1.NEXTVAL FROM DUAL";
             ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if(rs.next())
@@ -34,7 +34,7 @@ public class CompanyDAO {
         try {
             conn = db.getConnection(conn);
 
-            String sql = "INSERT INTO company VALUES (?,?,?,?,?,?,0)";
+            String sql = "INSERT INTO company_1 VALUES (?,?,?,?,?,?,0)";
             ps = conn.prepareStatement(sql);
             
             ps.setInt(1, c.getC_id());
