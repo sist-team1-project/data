@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DataBase {
     
-    private final String URL = "jdbc:oracle:thin:@211.63.89.131:1521:XE";
+    private final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
 
     public DataBase() {
         try {

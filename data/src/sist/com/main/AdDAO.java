@@ -13,7 +13,7 @@ public class AdDAO {
         try {
             conn = db.getConnection(conn);
             
-            String sql = "INSERT INTO ad VALUES (ad_id_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?,?,0)";
+            String sql = "INSERT INTO ad_1 VALUES (ad_id_seq_1.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?,?,0)";
             ps = conn.prepareStatement(sql);
 
             ps.setInt(1, a.getC_id());
